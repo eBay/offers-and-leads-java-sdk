@@ -10,7 +10,7 @@ import java.util.HashSet;
  */
 public final class OffersAndLeadsConfiguration {
     // Base URLs for each API
-    private String leadsBaseUrl = "https://apiz.ebay.com";
+    private String leadsBaseUrl = "https://apiz.ebay.com/sell/leads/v1";
     private String graphQLBaseUrl = "https://api.ebay.com/graphql";
 
     private String accessToken;  // static fallback; per-call token takes precedence
