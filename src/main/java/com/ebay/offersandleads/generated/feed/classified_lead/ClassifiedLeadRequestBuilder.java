@@ -1,0 +1,149 @@
+package com.ebay.offersandleads.generated.feed.classified_lead;
+
+import com.ebay.offersandleads.generated.feed.classified_lead.item.WithItemItemRequestBuilder;
+import com.ebay.offersandleads.generated.feed.models.ClassifiedLeadsListResponse;
+import com.microsoft.kiota.BaseRequestBuilder;
+import com.microsoft.kiota.BaseRequestConfiguration;
+import com.microsoft.kiota.HttpMethod;
+import com.microsoft.kiota.QueryParameters;
+import com.microsoft.kiota.RequestAdapter;
+import com.microsoft.kiota.RequestInformation;
+import com.microsoft.kiota.RequestOption;
+import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParsableFactory;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+/**
+ * Builds and executes requests for operations under /classified_lead
+ */
+@jakarta.annotation.Generated("com.microsoft.kiota")
+public class ClassifiedLeadRequestBuilder extends BaseRequestBuilder {
+    /**
+     * Gets an item from the com.ebay.offersandleads.generated.feed.classified_lead.item collection
+     * @param itemId The unique identifier of the listing.
+     * @return a {@link WithItemItemRequestBuilder}
+     */
+    @jakarta.annotation.Nonnull
+    public WithItemItemRequestBuilder byItemId(@jakarta.annotation.Nonnull final String itemId) {
+        Objects.requireNonNull(itemId);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("itemId", itemId);
+        return new WithItemItemRequestBuilder(urlTplParams, requestAdapter);
+    }
+    /**
+     * Instantiates a new {@link ClassifiedLeadRequestBuilder} and sets the default values.
+     * @param pathParameters Path parameters for the request
+     * @param requestAdapter The request adapter to use to execute the requests.
+     */
+    public ClassifiedLeadRequestBuilder(@jakarta.annotation.Nonnull final HashMap<String, Object> pathParameters, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
+        super(requestAdapter, "{+baseurl}/classified_lead{?endTime*,includeMessages*,startTime*,status*}", pathParameters);
+    }
+    /**
+     * Instantiates a new {@link ClassifiedLeadRequestBuilder} and sets the default values.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @param requestAdapter The request adapter to use to execute the requests.
+     */
+    public ClassifiedLeadRequestBuilder(@jakarta.annotation.Nonnull final String rawUrl, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
+        super(requestAdapter, "{+baseurl}/classified_lead{?endTime*,includeMessages*,startTime*,status*}", rawUrl);
+    }
+    /**
+     * This method retrieves leads for all of the seller&apos;s active classified ad listings. Optionally, just those matching specified filter criteria can be returned.&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This is a &lt;a href=&quot;https://developer.ebay.com/api-docs/static/versioning.html#limited&quot; target=&quot;_blank&quot;&gt; &lt;img src=&quot;/cms/img/docs/partners-api.svg&quot; class=&quot;legend-icon partners-icon&quot; title=&quot;Limited Release&quot;  alt=&quot;Limited Release&quot; /&gt;(Limited Release)&lt;/a&gt; API available only to select developers approved by business units. For information on how to obtain access to this API in production, please contact eBay support.&lt;/span&gt;&lt;/p&gt;
+     * @return a {@link ClassifiedLeadsListResponse}
+     */
+    @jakarta.annotation.Nullable
+    public ClassifiedLeadsListResponse get() {
+        return get(null);
+    }
+    /**
+     * This method retrieves leads for all of the seller&apos;s active classified ad listings. Optionally, just those matching specified filter criteria can be returned.&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This is a &lt;a href=&quot;https://developer.ebay.com/api-docs/static/versioning.html#limited&quot; target=&quot;_blank&quot;&gt; &lt;img src=&quot;/cms/img/docs/partners-api.svg&quot; class=&quot;legend-icon partners-icon&quot; title=&quot;Limited Release&quot;  alt=&quot;Limited Release&quot; /&gt;(Limited Release)&lt;/a&gt; API available only to select developers approved by business units. For information on how to obtain access to this API in production, please contact eBay support.&lt;/span&gt;&lt;/p&gt;
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a {@link ClassifiedLeadsListResponse}
+     */
+    @jakarta.annotation.Nullable
+    public ClassifiedLeadsListResponse get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+        final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
+        return this.requestAdapter.send(requestInfo, null, ClassifiedLeadsListResponse::createFromDiscriminatorValue);
+    }
+    /**
+     * This method retrieves leads for all of the seller&apos;s active classified ad listings. Optionally, just those matching specified filter criteria can be returned.&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This is a &lt;a href=&quot;https://developer.ebay.com/api-docs/static/versioning.html#limited&quot; target=&quot;_blank&quot;&gt; &lt;img src=&quot;/cms/img/docs/partners-api.svg&quot; class=&quot;legend-icon partners-icon&quot; title=&quot;Limited Release&quot;  alt=&quot;Limited Release&quot; /&gt;(Limited Release)&lt;/a&gt; API available only to select developers approved by business units. For information on how to obtain access to this API in production, please contact eBay support.&lt;/span&gt;&lt;/p&gt;
+     * @return a {@link RequestInformation}
+     */
+    @jakarta.annotation.Nonnull
+    public RequestInformation toGetRequestInformation() {
+        return toGetRequestInformation(null);
+    }
+    /**
+     * This method retrieves leads for all of the seller&apos;s active classified ad listings. Optionally, just those matching specified filter criteria can be returned.&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This is a &lt;a href=&quot;https://developer.ebay.com/api-docs/static/versioning.html#limited&quot; target=&quot;_blank&quot;&gt; &lt;img src=&quot;/cms/img/docs/partners-api.svg&quot; class=&quot;legend-icon partners-icon&quot; title=&quot;Limited Release&quot;  alt=&quot;Limited Release&quot; /&gt;(Limited Release)&lt;/a&gt; API available only to select developers approved by business units. For information on how to obtain access to this API in production, please contact eBay support.&lt;/span&gt;&lt;/p&gt;
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a {@link RequestInformation}
+     */
+    @jakarta.annotation.Nonnull
+    public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.GET, urlTemplate, pathParameters);
+        requestInfo.configure(requestConfiguration, GetRequestConfiguration::new, x -> x.queryParameters);
+        requestInfo.headers.tryAdd("Accept", "application/json");
+        return requestInfo;
+    }
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @return a {@link ClassifiedLeadRequestBuilder}
+     */
+    @jakarta.annotation.Nonnull
+    public ClassifiedLeadRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
+        Objects.requireNonNull(rawUrl);
+        return new ClassifiedLeadRequestBuilder(rawUrl, requestAdapter);
+    }
+    /**
+     * This method retrieves leads for all of the seller&apos;s active classified ad listings. Optionally, just those matching specified filter criteria can be returned.&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This is a &lt;a href=&quot;https://developer.ebay.com/api-docs/static/versioning.html#limited&quot; target=&quot;_blank&quot;&gt; &lt;img src=&quot;/cms/img/docs/partners-api.svg&quot; class=&quot;legend-icon partners-icon&quot; title=&quot;Limited Release&quot;  alt=&quot;Limited Release&quot; /&gt;(Limited Release)&lt;/a&gt; API available only to select developers approved by business units. For information on how to obtain access to this API in production, please contact eBay support.&lt;/span&gt;&lt;/p&gt;
+     */
+    @jakarta.annotation.Generated("com.microsoft.kiota")
+    public class GetQueryParameters implements QueryParameters {
+        /**
+         * Use with &lt;b&gt;startTime&lt;/b&gt; to limit the returned leads for the user. Only leads with a creation date less than or equal to the specified date and time will be returned.&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;The &lt;b&gt;startTime&lt;/b&gt; and &lt;b&gt;endTime&lt;/b&gt; fields can be used independently to filter results.&lt;/span&gt;&lt;/p&gt;The time stamp must be formatted as an &lt;a href=&quot;https://www.iso.org/iso-8601-date-and-time-format.html&quot; target=&quot;_blank&quot;&gt;ISO 8601&lt;/a&gt; string, which is based on the 24-hour Universal Coordinated Time (UTC) clock.&lt;br&gt;&lt;br&gt;&lt;b&gt;Format:&lt;/b&gt; &lt;code&gt;[YYYY]-[MM]-[DD]T[hh]:[mm]:[SS]Z&lt;/code&gt; &lt;br&gt;&lt;b&gt;Example:&lt;/b&gt;  &lt;code&gt;2025-01-10T15:54:00Z&lt;/code&gt;
+         */
+        @jakarta.annotation.Nullable
+        public String endTime;
+        /**
+         * Boolean that indicates whether to return mail messages for this lead in a &lt;b&gt;memberMessage&lt;/b&gt; container (&lt;code&gt;true&lt;/code&gt; returns messages). If omitted, no messages for this lead will be returned (same as when set to &lt;code&gt;false&lt;/code&gt;).&lt;p&gt;&lt;b&gt;Default: &lt;/b&gt;false&lt;p&gt;
+         */
+        @jakarta.annotation.Nullable
+        public String includeMessages;
+        /**
+         * Use with &lt;b&gt;endTime&lt;/b&gt; to limit the returned leads for the user. Only leads for active listings with a creation date greater than or equal to the specified date and time will be returned. &lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;The &lt;b&gt;startTime&lt;/b&gt; and &lt;b&gt;endTime&lt;/b&gt; fields can be used independently to filter results.&lt;/span&gt;&lt;/p&gt;The time stamp must be formatted as an &lt;a href=&quot;https://www.iso.org/iso-8601-date-and-time-format.html&quot; target=&quot;_blank&quot;&gt;ISO 8601&lt;/a&gt; string, which is based on the 24-hour Universal Coordinated Time (UTC) clock.&lt;br&gt;&lt;br&gt;&lt;b&gt;Format:&lt;/b&gt; &lt;code&gt;[YYYY]-[MM]-[DD]T[hh]:[mm]:[SS]Z&lt;/code&gt; &lt;br&gt;&lt;b&gt;Example:&lt;/b&gt;  &lt;code&gt;2025-01-10T15:54:00Z&lt;/code&gt;
+         */
+        @jakarta.annotation.Nullable
+        public String startTime;
+        /**
+         * The enumeration value in this field will indicate whether or not a question has been answered. Valid values include: &lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;Answered&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;Unanswered&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;
+         */
+        @jakarta.annotation.Nullable
+        public String status;
+        /**
+         * Extracts the query parameters into a map for the URI template parsing.
+         * @return a {@link Map<String, Object>}
+         */
+        @jakarta.annotation.Nonnull
+        public Map<String, Object> toQueryParameters() {
+            final Map<String, Object> allQueryParams = new HashMap();
+            allQueryParams.put("endTime", endTime);
+            allQueryParams.put("includeMessages", includeMessages);
+            allQueryParams.put("startTime", startTime);
+            allQueryParams.put("status", status);
+            return allQueryParams;
+        }
+    }
+    /**
+     * Configuration for the request such as headers, query parameters, and middleware options.
+     */
+    @jakarta.annotation.Generated("com.microsoft.kiota")
+    public class GetRequestConfiguration extends BaseRequestConfiguration {
+        /**
+         * Request query parameters
+         */
+        @jakarta.annotation.Nullable
+        public GetQueryParameters queryParameters = new GetQueryParameters();
+    }
+}
