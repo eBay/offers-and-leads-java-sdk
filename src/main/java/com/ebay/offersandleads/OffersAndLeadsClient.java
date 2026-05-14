@@ -1,5 +1,7 @@
 package com.ebay.offersandleads;
 
+import com.apollographql.apollo.ApolloClient;
+import com.ebay.offersandleads.clients.graphql.BearerTokenInterceptor;
 import com.ebay.offersandleads.clients.graphql.DynamicGraphQLClient;
 import com.ebay.offersandleads.clients.graphql.OffersGraphQLClient;
 import com.ebay.offersandleads.clients.rest.LeadsClient;
@@ -49,9 +51,21 @@ public final class OffersAndLeadsClient implements Closeable {
         leadsAdapter.setBaseUrl(config.getLeadsBaseUrl());
         this.leads = new LeadsClient(new FeedApiClient(leadsAdapter), config);
 
-        // GraphQL client
-        var dynamicGraphQL = new DynamicGraphQLClient(sharedHttpClient, config);
-        this.graphQL = new OffersGraphQLClient(dynamicGraphQL);
+        // Apollo client with token interceptor for GraphQL
+        var apolloHttp = new OkHttpClient.Builder()
+            .addInterceptor(new BearerTokenInterceptor(config))
+            .build();
+        var apolloClient = com.ebay.offersandleads.clients.graphql.ApolloClientFactory.create(
+            config.getGraphQLBaseUrl(),
+            apolloHttp
+        );
+
+        // GraphQL client (Apollo Kotlin with type safety)
+        this.graphQL = new OffersGraphQLClient(
+            apolloClient,
+            new DynamicGraphQLClient(sharedHttpClient, config),
+            config
+        );
     }
 
     /**
@@ -67,9 +81,21 @@ public final class OffersAndLeadsClient implements Closeable {
         leadsAdapter.setBaseUrl(config.getLeadsBaseUrl());
         this.leads = new LeadsClient(new FeedApiClient(leadsAdapter), config);
 
-        // GraphQL client
-        var dynamicGraphQL = new DynamicGraphQLClient(sharedHttpClient, config);
-        this.graphQL = new OffersGraphQLClient(dynamicGraphQL);
+        // Apollo client with token interceptor for GraphQL
+        var apolloHttp = new OkHttpClient.Builder()
+            .addInterceptor(new BearerTokenInterceptor(config))
+            .build();
+        var apolloClient = com.ebay.offersandleads.clients.graphql.ApolloClientFactory.create(
+            config.getGraphQLBaseUrl(),
+            apolloHttp
+        );
+
+        // GraphQL client (Apollo Kotlin with type safety)
+        this.graphQL = new OffersGraphQLClient(
+            apolloClient,
+            new DynamicGraphQLClient(sharedHttpClient, config),
+            config
+        );
     }
 
     @Override
