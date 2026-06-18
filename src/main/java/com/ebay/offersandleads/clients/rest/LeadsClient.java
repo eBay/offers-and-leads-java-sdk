@@ -69,29 +69,24 @@ public final class LeadsClient {
             String includeMessages,
             String accessToken,
             RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            try {
-                return kiota.classifiedLead().get(config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                    if (startTime != null) {
-                        config.queryParameters.startTime = startTime;
-                    }
-                    if (endTime != null) {
-                        config.queryParameters.endTime = endTime;
-                    }
-                    if (status != null) {
-                        config.queryParameters.status = status;
-                    }
-                    if (includeMessages != null) {
-                        config.queryParameters.includeMessages = includeMessages;
-                    }
-                });
-            } finally {
-                TokenContext.CURRENT.remove();
-            }
-        });
+            return kiota.classifiedLead().get(config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+                if (startTime != null) {
+                    config.queryParameters.startTime = startTime;
+                }
+                if (endTime != null) {
+                    config.queryParameters.endTime = endTime;
+                }
+                if (status != null) {
+                    config.queryParameters.status = status;
+                }
+                if (includeMessages != null) {
+                    config.queryParameters.includeMessages = includeMessages;
+                }
+            });
+        }));
     }
 
     /**
@@ -114,28 +109,24 @@ public final class LeadsClient {
             String includeMessages,
             String accessToken,
             RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Params.requireValid("itemId", itemId);
             Map<String, String> headers = mergedHeaders(requestOptions);
-            try {
-                return kiota.classifiedLead().byItemId(itemId).get(config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                    if (startTime != null) {
-                        config.queryParameters.startTime = startTime;
-                    }
-                    if (endTime != null) {
-                        config.queryParameters.endTime = endTime;
-                    }
-                    if (status != null) {
-                        config.queryParameters.status = status;
-                    }
-                    if (includeMessages != null) {
-                        config.queryParameters.includeMessages = includeMessages;
-                    }
-                });
-            } finally {
-                TokenContext.CURRENT.remove();
-            }
-        });
+            return kiota.classifiedLead().byItemId(itemId).get(config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+                if (startTime != null) {
+                    config.queryParameters.startTime = startTime;
+                }
+                if (endTime != null) {
+                    config.queryParameters.endTime = endTime;
+                }
+                if (status != null) {
+                    config.queryParameters.status = status;
+                }
+                if (includeMessages != null) {
+                    config.queryParameters.includeMessages = includeMessages;
+                }
+            });
+        }));
     }
 }

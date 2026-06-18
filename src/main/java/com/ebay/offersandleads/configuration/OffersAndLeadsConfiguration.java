@@ -23,9 +23,9 @@ import java.util.HashSet;
  * Provides base URLs for Leads REST API and GraphQL API, plus optional fallback access token.
  */
 public final class OffersAndLeadsConfiguration {
-    // Base URLs for each API
-    private String leadsBaseUrl = "https://apiz.ebay.com/sell/leads/v1";
-    private String graphQLBaseUrl = "https://api.ebay.com/graphql";
+    // Base URLs for each API (private final — SEC-002)
+    private final String leadsBaseUrl;
+    private final String graphQLBaseUrl;
 
     private String accessToken;  // static fallback; per-call token takes precedence
     private boolean diagnosticLogging = false;
@@ -36,14 +36,50 @@ public final class OffersAndLeadsConfiguration {
      */
     private RequestOptions defaultRequestOptions = new RequestOptions();
 
-    // Getters and setters
+    /** Default constructor — uses production eBay endpoints. */
+    public OffersAndLeadsConfiguration() {
+        this.leadsBaseUrl = "https://apiz.ebay.com";
+        this.graphQLBaseUrl = "https://api.ebay.com/graphql";
+    }
+
+    /**
+     * Constructor accepting custom base URLs.
+     * All URLs are validated against the allowed-hosts list (SEC-002).
+     *
+     * @param leadsBaseUrl    Base URL for the Sell Leads REST API
+     * @param graphQLBaseUrl  Base URL for the Offers GraphQL API
+     */
+    public OffersAndLeadsConfiguration(String leadsBaseUrl, String graphQLBaseUrl) {
+        // Validate after building allowed-hosts from defaults so we can call validateHost
+        // with a preliminary set before the fields are set.
+        Set<String> allowed = new HashSet<>();
+        allowed.add("apiz.ebay.com");
+        allowed.add("api.ebay.com");
+        this.leadsBaseUrl = validateHost(leadsBaseUrl, allowed);
+        this.graphQLBaseUrl = validateHost(graphQLBaseUrl, allowed);
+    }
+
+    // Getters only — no setters for URL fields (SEC-002)
     public String getLeadsBaseUrl() { return leadsBaseUrl; }
-    public void setLeadsBaseUrl(String leadsBaseUrl) { this.leadsBaseUrl = leadsBaseUrl; }
-
     public String getGraphQLBaseUrl() { return graphQLBaseUrl; }
-    public void setGraphQLBaseUrl(String graphQLBaseUrl) { this.graphQLBaseUrl = graphQLBaseUrl; }
 
+    /**
+     * Returns the static fallback access token.
+     *
+     * <p><strong>Security note (SEC-002):</strong> The token is stored as a plain {@code String}
+     * on the heap. Avoid logging or serialising configuration objects that hold tokens.</p>
+     */
     public String getAccessToken() { return accessToken; }
+
+    /**
+     * Sets the static fallback access token.
+     *
+     * <p><strong>Security note (SEC-002):</strong> Prefer per-call tokens passed directly to
+     * each async method. A globally-stored token on the heap may be visible to other threads
+     * and heap dumps. Clear the token when it is no longer needed.</p>
+     *
+     * @param accessToken OAuth bearer token
+     */
     public void setAccessToken(String accessToken) { this.accessToken = accessToken; }
 
     public boolean isDiagnosticLogging() { return diagnosticLogging; }
@@ -68,5 +104,17 @@ public final class OffersAndLeadsConfiguration {
         } catch (Exception e) {
             return "api.ebay.com"; // fallback
         }
+    }
+
+    private static String validateHost(String url, Set<String> allowedHosts) {
+        try {
+            String host = new java.net.URI(url).getHost();
+            if (host == null || !allowedHosts.contains(host)) {
+                throw new IllegalArgumentException("URL host not in allowed list: " + url);
+            }
+        } catch (java.net.URISyntaxException e) {
+            throw new IllegalArgumentException("Invalid URL: " + url, e);
+        }
+        return url;
     }
 }

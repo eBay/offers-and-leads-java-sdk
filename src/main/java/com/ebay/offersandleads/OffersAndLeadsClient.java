@@ -26,6 +26,7 @@ import com.microsoft.kiota.authentication.BaseBearerTokenAuthenticationProvider;
 import com.microsoft.kiota.http.OkHttpRequestAdapter;
 import okhttp3.OkHttpClient;
 import java.io.Closeable;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Main facade for the Offers and Leads SDK.
@@ -54,8 +55,11 @@ public final class OffersAndLeadsClient implements Closeable {
     public final OffersGraphQLClient graphQL;
 
     public OffersAndLeadsClient(OffersAndLeadsConfiguration config) {
-        // Shared OkHttpClient for all REST clients
+        // Shared OkHttpClient for all REST clients (SEC-005: explicit timeouts)
         this.sharedHttpClient = new OkHttpClient.Builder()
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
             .build();
 
         var authProvider = new BaseBearerTokenAuthenticationProvider(new KiotaAuthProvider(config));
