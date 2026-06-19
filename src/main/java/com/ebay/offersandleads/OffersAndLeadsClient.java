@@ -50,6 +50,7 @@ import java.util.concurrent.TimeUnit;
  */
 public final class OffersAndLeadsClient implements Closeable {
     private final OkHttpClient sharedHttpClient;
+    private final OkHttpClient apolloHttpClient;
 
     public final LeadsClient leads;
     public final OffersGraphQLClient graphQL;
@@ -69,43 +70,16 @@ public final class OffersAndLeadsClient implements Closeable {
         leadsAdapter.setBaseUrl(config.getLeadsBaseUrl());
         this.leads = new LeadsClient(new FeedApiClient(leadsAdapter), config);
 
-        // Apollo client with token interceptor for GraphQL
-        var apolloHttp = new OkHttpClient.Builder()
+        // Apollo client with token interceptor for GraphQL (SEC-004: stored as field for proper lifecycle)
+        this.apolloHttpClient = new OkHttpClient.Builder()
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
             .addInterceptor(new BearerTokenInterceptor(config))
             .build();
         var apolloClient = com.ebay.offersandleads.clients.graphql.ApolloClientFactory.create(
             config.getGraphQLBaseUrl(),
-            apolloHttp
-        );
-
-        // GraphQL client (Apollo Kotlin with type safety)
-        this.graphQL = new OffersGraphQLClient(
-            apolloClient,
-            new DynamicGraphQLClient(sharedHttpClient, config),
-            config
-        );
-    }
-
-    /**
-     * Constructor with custom OkHttpClient.
-     * Useful for testing or custom HTTP configuration.
-     */
-    public OffersAndLeadsClient(OffersAndLeadsConfiguration config, OkHttpClient httpClient) {
-        this.sharedHttpClient = httpClient;
-
-        var authProvider = new BaseBearerTokenAuthenticationProvider(new KiotaAuthProvider(config));
-
-        var leadsAdapter = new OkHttpRequestAdapter(authProvider, null, null, sharedHttpClient);
-        leadsAdapter.setBaseUrl(config.getLeadsBaseUrl());
-        this.leads = new LeadsClient(new FeedApiClient(leadsAdapter), config);
-
-        // Apollo client with token interceptor for GraphQL
-        var apolloHttp = new OkHttpClient.Builder()
-            .addInterceptor(new BearerTokenInterceptor(config))
-            .build();
-        var apolloClient = com.ebay.offersandleads.clients.graphql.ApolloClientFactory.create(
-            config.getGraphQLBaseUrl(),
-            apolloHttp
+            apolloHttpClient
         );
 
         // GraphQL client (Apollo Kotlin with type safety)
@@ -120,5 +94,7 @@ public final class OffersAndLeadsClient implements Closeable {
     public void close() {
         sharedHttpClient.dispatcher().executorService().shutdown();
         sharedHttpClient.connectionPool().evictAll();
+        apolloHttpClient.dispatcher().executorService().shutdown();
+        apolloHttpClient.connectionPool().evictAll();
     }
 }
