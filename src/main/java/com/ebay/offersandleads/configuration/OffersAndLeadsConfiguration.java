@@ -14,6 +14,7 @@
 
 package com.ebay.offersandleads.configuration;
 
+import jakarta.annotation.Nullable;
 import java.net.URI;
 import java.util.Set;
 import java.util.HashSet;
@@ -27,7 +28,7 @@ public final class OffersAndLeadsConfiguration {
     private final String leadsBaseUrl;
     private final String graphQLBaseUrl;
 
-    private String accessToken;  // static fallback; per-call token takes precedence
+    private @Nullable String accessToken;  // static fallback; per-call token takes precedence
     private boolean diagnosticLogging = false;
 
     /**
@@ -69,7 +70,7 @@ public final class OffersAndLeadsConfiguration {
      * <p><strong>Security note (SEC-002):</strong> The token is stored as a plain {@code String}
      * on the heap. Avoid logging or serialising configuration objects that hold tokens.</p>
      */
-    public String getAccessToken() { return accessToken; }
+    public @Nullable String getAccessToken() { return accessToken; }
 
     /**
      * Sets the static fallback access token.
@@ -80,7 +81,7 @@ public final class OffersAndLeadsConfiguration {
      *
      * @param accessToken OAuth bearer token
      */
-    public void setAccessToken(String accessToken) { this.accessToken = accessToken; }
+    public void setAccessToken(@Nullable String accessToken) { this.accessToken = accessToken; }
 
     public boolean isDiagnosticLogging() { return diagnosticLogging; }
     public void setDiagnosticLogging(boolean diagnosticLogging) { this.diagnosticLogging = diagnosticLogging; }
