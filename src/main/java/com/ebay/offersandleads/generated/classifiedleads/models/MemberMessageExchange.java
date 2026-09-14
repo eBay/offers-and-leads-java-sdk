@@ -31,15 +31,15 @@ public class MemberMessageExchange implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * Date the message was created. Returned if the parent container is returned.
+     * This is the date the message was created. It is returned if the parent container is returned.
      */
     private String creationDate;
     /**
-     * Question
+     * This contains all the information about the question being asked. It is returned if the parent container is returned.
      */
     private Question question;
     /**
-     * An answer to the question. Contains the body of the seller&apos;s response message, if sent.
+     * This is an answer to the question. It contains the body of the seller&apos;s response message, if sent.
      */
     private String response;
     /**
@@ -67,7 +67,7 @@ public class MemberMessageExchange implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the creationDate property value. Date the message was created. Returned if the parent container is returned.
+     * Gets the creationDate property value. This is the date the message was created. It is returned if the parent container is returned.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -87,7 +87,7 @@ public class MemberMessageExchange implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the question property value. Question
+     * Gets the question property value. This contains all the information about the question being asked. It is returned if the parent container is returned.
      * @return a {@link Question}
      */
     @jakarta.annotation.Nullable
@@ -95,7 +95,7 @@ public class MemberMessageExchange implements AdditionalDataHolder, Parsable {
         return this.question;
     }
     /**
-     * Gets the response property value. An answer to the question. Contains the body of the seller&apos;s response message, if sent.
+     * Gets the response property value. This is an answer to the question. It contains the body of the seller&apos;s response message, if sent.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -121,21 +121,21 @@ public class MemberMessageExchange implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the creationDate property value. Date the message was created. Returned if the parent container is returned.
+     * Sets the creationDate property value. This is the date the message was created. It is returned if the parent container is returned.
      * @param value Value to set for the creationDate property.
      */
     public void setCreationDate(@jakarta.annotation.Nullable final String value) {
         this.creationDate = value;
     }
     /**
-     * Sets the question property value. Question
+     * Sets the question property value. This contains all the information about the question being asked. It is returned if the parent container is returned.
      * @param value Value to set for the question property.
      */
     public void setQuestion(@jakarta.annotation.Nullable final Question value) {
         this.question = value;
     }
     /**
-     * Sets the response property value. An answer to the question. Contains the body of the seller&apos;s response message, if sent.
+     * Sets the response property value. This is an answer to the question. It contains the body of the seller&apos;s response message, if sent.
      * @param value Value to set for the response property.
      */
     public void setResponse(@jakarta.annotation.Nullable final String value) {

@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * Question
+ * This type contains the body and ID of the question.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class Question implements AdditionalDataHolder, Parsable {
@@ -31,11 +31,11 @@ public class Question implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * Content of the message is input into this string field.
+     * This is the content of the message.
      */
     private String body;
     /**
-     * The unique identifier of the message.
+     * This is the unique identifier of the message.
      */
     private Integer messageID;
     /**
@@ -63,7 +63,7 @@ public class Question implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the body property value. Content of the message is input into this string field.
+     * Gets the body property value. This is the content of the message.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -82,7 +82,7 @@ public class Question implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the messageID property value. The unique identifier of the message.
+     * Gets the messageID property value. This is the unique identifier of the message.
      * @return a {@link Integer}
      */
     @jakarta.annotation.Nullable
@@ -107,14 +107,14 @@ public class Question implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the body property value. Content of the message is input into this string field.
+     * Sets the body property value. This is the content of the message.
      * @param value Value to set for the body property.
      */
     public void setBody(@jakarta.annotation.Nullable final String value) {
         this.body = value;
     }
     /**
-     * Sets the messageID property value. The unique identifier of the message.
+     * Sets the messageID property value. This is the unique identifier of the message.
      * @param value Value to set for the messageID property.
      */
     public void setMessageID(@jakarta.annotation.Nullable final Integer value) {

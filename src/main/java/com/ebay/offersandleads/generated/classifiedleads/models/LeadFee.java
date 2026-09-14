@@ -31,7 +31,7 @@ public class LeadFee implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type provides monetary amount of the special fee.
+     * A container that returns the amount charged for the lead service with currency information.
      */
     private Amount amount;
     /**
@@ -63,7 +63,7 @@ public class LeadFee implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the amount property value. This type provides monetary amount of the special fee.
+     * Gets the amount property value. A container that returns the amount charged for the lead service with currency information.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -107,7 +107,7 @@ public class LeadFee implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the amount property value. This type provides monetary amount of the special fee.
+     * Sets the amount property value. A container that returns the amount charged for the lead service with currency information.
      * @param value Value to set for the amount property.
      */
     public void setAmount(@jakarta.annotation.Nullable final Amount value) {

@@ -21,6 +21,7 @@ import com.ebay.offersandleads.exceptions.GraphQLException
 import com.ebay.offersandleads.generated.graphql.*
 import com.ebay.offersandleads.generated.graphql.type.*
 import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo.api.Optional
 import kotlinx.coroutines.future.future
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

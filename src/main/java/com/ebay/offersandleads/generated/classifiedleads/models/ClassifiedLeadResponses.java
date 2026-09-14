@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * This type provides classified lead responses including any contact information that prospective buyers have submitted.
+ * This type provides classified lead responses, including any contact information that prospective buyers have submitted.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
@@ -31,11 +31,11 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This field shows the first message that was sent from the prospective buyer to the seller. This will be the same content as in the &lt;b&gt;memberMessageExchange.question.body&lt;/b&gt; field, if returned. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; Retrieve the &lt;b&gt;memberMessageExchange&lt;/b&gt; container to retrieve the entire exchange between the seller and the prospective buyer (all messages).&lt;/span&gt;
+     * This field shows the first message that was sent from the prospective buyer to the seller. This will be the same content as in the &lt;strong&gt;memberMessageExchange.question.body&lt;/strong&gt; field, if returned. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; Retrieve the &lt;strong&gt;memberMessageExchange&lt;/strong&gt; container to retrieve the entire exchange between the seller and the prospective buyer (all messages).&lt;/span&gt;
      */
     private String additionalInformation;
     /**
-     * This type consists of contact information for the prospective buyer.
+     * This container consists of contact information for the prospective buyer. Fields in this container are returned if provided. This container will not be returned if the buyer did not provide any contact information.
      */
     private ContactInformation contactInformation;
     /**
@@ -43,23 +43,23 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
      */
     private String email;
     /**
-     * Email address for the prospective buyer as entered in the lead form on the &lt;b&gt;View Item&lt;/b&gt; page. Provides a way for sellers to contact prospective buyers who choose not to log in to eBay. This applies to only eBay Motors and eBay Motors categories.
+     * Email address for the prospective buyer as entered in the lead form on the &lt;strong&gt;View Item&lt;/strong&gt; page. Provides a way for sellers to contact prospective buyers who choose not to log in to eBay. This applies only to eBay Motors and eBay Motors categories.
      */
     private String externalEmail;
     /**
-     * Boolean that indicates if a prospective buyer answered whether or not they would like financing. Entered on the lead form on the &lt;b&gt;View Item&lt;/b&gt; page. Applies to eBay Motors and Motors categories only.
+     * Boolean that indicates if a prospective buyer answered whether or not they would like financing. Entered on the lead form on the &lt;strong&gt;View Item&lt;/strong&gt; page. This applies only to eBay Motors and Motors categories.
      */
     private Boolean financingAnswer;
     /**
-     * This type returns the amount charged for the lead service.
+     * A container that returns the amount charged for this pay-per-lead contact in the item&apos;s site local currency.
      */
     private LeadFee leadFee;
     /**
-     * The enumeration value in this field indicates whether or not the seller has responded to the lead, or if this is new. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/leads/types/api:LeadStatus&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The enumeration value in this field indicates whether or not the seller has responded to the lead or if this is new.
      */
-    private String leadStatus;
+    private LeadStatus leadStatus;
     /**
-     * This type defines the field containing any mail message content shared between the seller and prospective buyer.
+     * Contains any mail message content shared between the seller and prospective buyer. &lt;br&gt;&lt;br&gt;Only returned if the &lt;strong&gt;includeMessages&lt;/strong&gt; boolean is &lt;code&gt;true&lt;/code&gt;.
      */
     private MemberMessage memberMessage;
     /**
@@ -67,15 +67,15 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
      */
     private String submittedTime;
     /**
-     * The make of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the &lt;b&gt;View Item&lt;/b&gt; page. Applies to eBay Motors and Motors categories only.
+     * The make of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the &lt;strong&gt;View Item&lt;/strong&gt; page. This applies only to eBay Motors and eBay Motors categories.
      */
     private String tradeInMake;
     /**
-     * The model of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the &lt;b&gt;View Item&lt;/b&gt; page. Applies to eBay Motors and Motors categories only.
+     * The model of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the &lt;strong&gt;View Item&lt;/strong&gt; page. This applies only to eBay Motors and eBay Motors categories.
      */
     private String tradeInModel;
     /**
-     * The year of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the &lt;b&gt;View Item&lt;/b&gt; page. Applies to eBay Motors and Motors categories only.
+     * The year of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the &lt;strong&gt;View Item&lt;/strong&gt; page. This applies only to eBay Motors and eBay Motors categories.
      */
     private String tradeInYear;
     /**
@@ -107,7 +107,7 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the additionalInformation property value. This field shows the first message that was sent from the prospective buyer to the seller. This will be the same content as in the &lt;b&gt;memberMessageExchange.question.body&lt;/b&gt; field, if returned. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; Retrieve the &lt;b&gt;memberMessageExchange&lt;/b&gt; container to retrieve the entire exchange between the seller and the prospective buyer (all messages).&lt;/span&gt;
+     * Gets the additionalInformation property value. This field shows the first message that was sent from the prospective buyer to the seller. This will be the same content as in the &lt;strong&gt;memberMessageExchange.question.body&lt;/strong&gt; field, if returned. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; Retrieve the &lt;strong&gt;memberMessageExchange&lt;/strong&gt; container to retrieve the entire exchange between the seller and the prospective buyer (all messages).&lt;/span&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -115,7 +115,7 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
         return this.additionalInformation;
     }
     /**
-     * Gets the contactInformation property value. This type consists of contact information for the prospective buyer.
+     * Gets the contactInformation property value. This container consists of contact information for the prospective buyer. Fields in this container are returned if provided. This container will not be returned if the buyer did not provide any contact information.
      * @return a {@link ContactInformation}
      */
     @jakarta.annotation.Nullable
@@ -131,7 +131,7 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
         return this.email;
     }
     /**
-     * Gets the externalEmail property value. Email address for the prospective buyer as entered in the lead form on the &lt;b&gt;View Item&lt;/b&gt; page. Provides a way for sellers to contact prospective buyers who choose not to log in to eBay. This applies to only eBay Motors and eBay Motors categories.
+     * Gets the externalEmail property value. Email address for the prospective buyer as entered in the lead form on the &lt;strong&gt;View Item&lt;/strong&gt; page. Provides a way for sellers to contact prospective buyers who choose not to log in to eBay. This applies only to eBay Motors and eBay Motors categories.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -151,7 +151,7 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
         deserializerMap.put("externalEmail", (n) -> { this.setExternalEmail(n.getStringValue()); });
         deserializerMap.put("financingAnswer", (n) -> { this.setFinancingAnswer(n.getBooleanValue()); });
         deserializerMap.put("leadFee", (n) -> { this.setLeadFee(n.getObjectValue(LeadFee::createFromDiscriminatorValue)); });
-        deserializerMap.put("leadStatus", (n) -> { this.setLeadStatus(n.getStringValue()); });
+        deserializerMap.put("leadStatus", (n) -> { this.setLeadStatus(n.getEnumValue(LeadStatus::forValue)); });
         deserializerMap.put("memberMessage", (n) -> { this.setMemberMessage(n.getObjectValue(MemberMessage::createFromDiscriminatorValue)); });
         deserializerMap.put("submittedTime", (n) -> { this.setSubmittedTime(n.getStringValue()); });
         deserializerMap.put("tradeInMake", (n) -> { this.setTradeInMake(n.getStringValue()); });
@@ -161,7 +161,7 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the financingAnswer property value. Boolean that indicates if a prospective buyer answered whether or not they would like financing. Entered on the lead form on the &lt;b&gt;View Item&lt;/b&gt; page. Applies to eBay Motors and Motors categories only.
+     * Gets the financingAnswer property value. Boolean that indicates if a prospective buyer answered whether or not they would like financing. Entered on the lead form on the &lt;strong&gt;View Item&lt;/strong&gt; page. This applies only to eBay Motors and Motors categories.
      * @return a {@link Boolean}
      */
     @jakarta.annotation.Nullable
@@ -169,7 +169,7 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
         return this.financingAnswer;
     }
     /**
-     * Gets the leadFee property value. This type returns the amount charged for the lead service.
+     * Gets the leadFee property value. A container that returns the amount charged for this pay-per-lead contact in the item&apos;s site local currency.
      * @return a {@link LeadFee}
      */
     @jakarta.annotation.Nullable
@@ -177,15 +177,15 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
         return this.leadFee;
     }
     /**
-     * Gets the leadStatus property value. The enumeration value in this field indicates whether or not the seller has responded to the lead, or if this is new. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/leads/types/api:LeadStatus&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the leadStatus property value. The enumeration value in this field indicates whether or not the seller has responded to the lead or if this is new.
+     * @return a {@link LeadStatus}
      */
     @jakarta.annotation.Nullable
-    public String getLeadStatus() {
+    public LeadStatus getLeadStatus() {
         return this.leadStatus;
     }
     /**
-     * Gets the memberMessage property value. This type defines the field containing any mail message content shared between the seller and prospective buyer.
+     * Gets the memberMessage property value. Contains any mail message content shared between the seller and prospective buyer. &lt;br&gt;&lt;br&gt;Only returned if the &lt;strong&gt;includeMessages&lt;/strong&gt; boolean is &lt;code&gt;true&lt;/code&gt;.
      * @return a {@link MemberMessage}
      */
     @jakarta.annotation.Nullable
@@ -201,7 +201,7 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
         return this.submittedTime;
     }
     /**
-     * Gets the tradeInMake property value. The make of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the &lt;b&gt;View Item&lt;/b&gt; page. Applies to eBay Motors and Motors categories only.
+     * Gets the tradeInMake property value. The make of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the &lt;strong&gt;View Item&lt;/strong&gt; page. This applies only to eBay Motors and eBay Motors categories.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -209,7 +209,7 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
         return this.tradeInMake;
     }
     /**
-     * Gets the tradeInModel property value. The model of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the &lt;b&gt;View Item&lt;/b&gt; page. Applies to eBay Motors and Motors categories only.
+     * Gets the tradeInModel property value. The model of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the &lt;strong&gt;View Item&lt;/strong&gt; page. This applies only to eBay Motors and eBay Motors categories.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -217,7 +217,7 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
         return this.tradeInModel;
     }
     /**
-     * Gets the tradeInYear property value. The year of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the &lt;b&gt;View Item&lt;/b&gt; page. Applies to eBay Motors and Motors categories only.
+     * Gets the tradeInYear property value. The year of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the &lt;strong&gt;View Item&lt;/strong&gt; page. This applies only to eBay Motors and eBay Motors categories.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -244,7 +244,7 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
         writer.writeStringValue("externalEmail", this.getExternalEmail());
         writer.writeBooleanValue("financingAnswer", this.getFinancingAnswer());
         writer.writeObjectValue("leadFee", this.getLeadFee());
-        writer.writeStringValue("leadStatus", this.getLeadStatus());
+        writer.writeEnumValue("leadStatus", this.getLeadStatus());
         writer.writeObjectValue("memberMessage", this.getMemberMessage());
         writer.writeStringValue("submittedTime", this.getSubmittedTime());
         writer.writeStringValue("tradeInMake", this.getTradeInMake());
@@ -261,14 +261,14 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the additionalInformation property value. This field shows the first message that was sent from the prospective buyer to the seller. This will be the same content as in the &lt;b&gt;memberMessageExchange.question.body&lt;/b&gt; field, if returned. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; Retrieve the &lt;b&gt;memberMessageExchange&lt;/b&gt; container to retrieve the entire exchange between the seller and the prospective buyer (all messages).&lt;/span&gt;
+     * Sets the additionalInformation property value. This field shows the first message that was sent from the prospective buyer to the seller. This will be the same content as in the &lt;strong&gt;memberMessageExchange.question.body&lt;/strong&gt; field, if returned. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; Retrieve the &lt;strong&gt;memberMessageExchange&lt;/strong&gt; container to retrieve the entire exchange between the seller and the prospective buyer (all messages).&lt;/span&gt;
      * @param value Value to set for the additionalInformation property.
      */
     public void setAdditionalInformation(@jakarta.annotation.Nullable final String value) {
         this.additionalInformation = value;
     }
     /**
-     * Sets the contactInformation property value. This type consists of contact information for the prospective buyer.
+     * Sets the contactInformation property value. This container consists of contact information for the prospective buyer. Fields in this container are returned if provided. This container will not be returned if the buyer did not provide any contact information.
      * @param value Value to set for the contactInformation property.
      */
     public void setContactInformation(@jakarta.annotation.Nullable final ContactInformation value) {
@@ -282,35 +282,35 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
         this.email = value;
     }
     /**
-     * Sets the externalEmail property value. Email address for the prospective buyer as entered in the lead form on the &lt;b&gt;View Item&lt;/b&gt; page. Provides a way for sellers to contact prospective buyers who choose not to log in to eBay. This applies to only eBay Motors and eBay Motors categories.
+     * Sets the externalEmail property value. Email address for the prospective buyer as entered in the lead form on the &lt;strong&gt;View Item&lt;/strong&gt; page. Provides a way for sellers to contact prospective buyers who choose not to log in to eBay. This applies only to eBay Motors and eBay Motors categories.
      * @param value Value to set for the externalEmail property.
      */
     public void setExternalEmail(@jakarta.annotation.Nullable final String value) {
         this.externalEmail = value;
     }
     /**
-     * Sets the financingAnswer property value. Boolean that indicates if a prospective buyer answered whether or not they would like financing. Entered on the lead form on the &lt;b&gt;View Item&lt;/b&gt; page. Applies to eBay Motors and Motors categories only.
+     * Sets the financingAnswer property value. Boolean that indicates if a prospective buyer answered whether or not they would like financing. Entered on the lead form on the &lt;strong&gt;View Item&lt;/strong&gt; page. This applies only to eBay Motors and Motors categories.
      * @param value Value to set for the financingAnswer property.
      */
     public void setFinancingAnswer(@jakarta.annotation.Nullable final Boolean value) {
         this.financingAnswer = value;
     }
     /**
-     * Sets the leadFee property value. This type returns the amount charged for the lead service.
+     * Sets the leadFee property value. A container that returns the amount charged for this pay-per-lead contact in the item&apos;s site local currency.
      * @param value Value to set for the leadFee property.
      */
     public void setLeadFee(@jakarta.annotation.Nullable final LeadFee value) {
         this.leadFee = value;
     }
     /**
-     * Sets the leadStatus property value. The enumeration value in this field indicates whether or not the seller has responded to the lead, or if this is new. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/leads/types/api:LeadStatus&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the leadStatus property value. The enumeration value in this field indicates whether or not the seller has responded to the lead or if this is new.
      * @param value Value to set for the leadStatus property.
      */
-    public void setLeadStatus(@jakarta.annotation.Nullable final String value) {
+    public void setLeadStatus(@jakarta.annotation.Nullable final LeadStatus value) {
         this.leadStatus = value;
     }
     /**
-     * Sets the memberMessage property value. This type defines the field containing any mail message content shared between the seller and prospective buyer.
+     * Sets the memberMessage property value. Contains any mail message content shared between the seller and prospective buyer. &lt;br&gt;&lt;br&gt;Only returned if the &lt;strong&gt;includeMessages&lt;/strong&gt; boolean is &lt;code&gt;true&lt;/code&gt;.
      * @param value Value to set for the memberMessage property.
      */
     public void setMemberMessage(@jakarta.annotation.Nullable final MemberMessage value) {
@@ -324,21 +324,21 @@ public class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable {
         this.submittedTime = value;
     }
     /**
-     * Sets the tradeInMake property value. The make of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the &lt;b&gt;View Item&lt;/b&gt; page. Applies to eBay Motors and Motors categories only.
+     * Sets the tradeInMake property value. The make of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the &lt;strong&gt;View Item&lt;/strong&gt; page. This applies only to eBay Motors and eBay Motors categories.
      * @param value Value to set for the tradeInMake property.
      */
     public void setTradeInMake(@jakarta.annotation.Nullable final String value) {
         this.tradeInMake = value;
     }
     /**
-     * Sets the tradeInModel property value. The model of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the &lt;b&gt;View Item&lt;/b&gt; page. Applies to eBay Motors and Motors categories only.
+     * Sets the tradeInModel property value. The model of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the &lt;strong&gt;View Item&lt;/strong&gt; page. This applies only to eBay Motors and eBay Motors categories.
      * @param value Value to set for the tradeInModel property.
      */
     public void setTradeInModel(@jakarta.annotation.Nullable final String value) {
         this.tradeInModel = value;
     }
     /**
-     * Sets the tradeInYear property value. The year of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the &lt;b&gt;View Item&lt;/b&gt; page. Applies to eBay Motors and Motors categories only.
+     * Sets the tradeInYear property value. The year of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the &lt;strong&gt;View Item&lt;/strong&gt; page. This applies only to eBay Motors and eBay Motors categories.
      * @param value Value to set for the tradeInYear property.
      */
     public void setTradeInYear(@jakarta.annotation.Nullable final String value) {

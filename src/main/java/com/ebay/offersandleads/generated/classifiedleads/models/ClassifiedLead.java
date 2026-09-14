@@ -35,7 +35,7 @@ public class ClassifiedLead implements AdditionalDataHolder, Parsable {
      */
     private String itemId;
     /**
-     * The title of the listing.&lt;br&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 80.
+     * The title of the listing.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Maximum length:&lt;/strong&gt; 80
      */
     private String itemTitle;
     /**
@@ -87,7 +87,7 @@ public class ClassifiedLead implements AdditionalDataHolder, Parsable {
         return this.itemId;
     }
     /**
-     * Gets the itemTitle property value. The title of the listing.&lt;br&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 80.
+     * Gets the itemTitle property value. The title of the listing.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Maximum length:&lt;/strong&gt; 80
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -128,7 +128,7 @@ public class ClassifiedLead implements AdditionalDataHolder, Parsable {
         this.itemId = value;
     }
     /**
-     * Sets the itemTitle property value. The title of the listing.&lt;br&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 80.
+     * Sets the itemTitle property value. The title of the listing.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Maximum length:&lt;/strong&gt; 80
      * @param value Value to set for the itemTitle property.
      */
     public void setItemTitle(@jakarta.annotation.Nullable final String value) {
