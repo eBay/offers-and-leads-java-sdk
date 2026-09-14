@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.ebay.offersandleads.generated.feed.classified_lead;
+package com.ebay.offersandleads.generated.classifiedleads.classified_lead;
 
-import com.ebay.offersandleads.generated.feed.classified_lead.item.WithItemItemRequestBuilder;
-import com.ebay.offersandleads.generated.feed.models.ClassifiedLeadsListResponse;
+import com.ebay.offersandleads.generated.classifiedleads.classified_lead.item.WithItemItemRequestBuilder;
+import com.ebay.offersandleads.generated.classifiedleads.models.ClassifiedLeadsListResponse;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
@@ -35,7 +35,7 @@ import java.util.Objects;
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class ClassifiedLeadRequestBuilder extends BaseRequestBuilder {
     /**
-     * Gets an item from the com.ebay.offersandleads.generated.feed.classified_lead.item collection
+     * Gets an item from the com.ebay.offersandleads.generated.classifiedleads.classified_lead.item collection
      * @param itemId The unique identifier of the listing.
      * @return a {@link WithItemItemRequestBuilder}
      */

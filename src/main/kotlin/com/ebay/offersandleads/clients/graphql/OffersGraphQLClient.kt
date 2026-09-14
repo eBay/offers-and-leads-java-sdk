@@ -24,12 +24,7 @@ import com.apollographql.apollo.ApolloClient
 import kotlinx.coroutines.future.future
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import java.util.concurrent.CompletableFuture
 
-/**
- * Typed GraphQL client for Offers and Leads operations using Apollo Kotlin.
- * Provides strongly-typed access to all 6 GraphQL operations.
- */
 class OffersGraphQLClient @JvmOverloads internal constructor(
     private val apolloClient: ApolloClient,
     private val dynamicClient: DynamicGraphQLClient,
@@ -37,13 +32,6 @@ class OffersGraphQLClient @JvmOverloads internal constructor(
     private val scope: CoroutineScope = CoroutineScope(Dispatchers.IO)
 ) {
 
-    // ══════════════════════════════════════════════════════════════════════════
-    // MUTATIONS
-    // ══════════════════════════════════════════════════════════════════════════
-
-    /**
-     * Accept an offer.
-     */
     suspend fun acceptOfferAsync(
         input: AcceptOfferInput,
         accessToken: String? = null
@@ -61,93 +49,6 @@ class OffersGraphQLClient @JvmOverloads internal constructor(
         }
     }
 
-    /**
-     * Decline an offer.
-     */
-    suspend fun declineOfferAsync(
-        input: DeclineOfferInput,
-        accessToken: String? = null
-    ): DeclineOfferMutation.DeclineOffer? {
-        val prev = TokenContext.CURRENT.get()
-        TokenContext.CURRENT.set(accessToken ?: prev)
-        try {
-            val response = apolloClient.mutation(DeclineOfferMutation(input)).execute()
-            if (response.hasErrors()) {
-                throw GraphQLException(response.errors!!.map { it.message })
-            }
-            return response.dataAssertNoErrors.declineOffer
-        } finally {
-            TokenContext.CURRENT.set(prev)
-        }
-    }
-
-    /**
-     * Counter an offer with a new price/quantity.
-     */
-    suspend fun counterOfferAsync(
-        input: CounterOfferInput,
-        accessToken: String? = null
-    ): CounterOfferMutation.CounterOffer? {
-        val prev = TokenContext.CURRENT.get()
-        TokenContext.CURRENT.set(accessToken ?: prev)
-        try {
-            val response = apolloClient.mutation(CounterOfferMutation(input)).execute()
-            if (response.hasErrors()) {
-                throw GraphQLException(response.errors!!.map { it.message })
-            }
-            return response.dataAssertNoErrors.counterOffer
-        } finally {
-            TokenContext.CURRENT.set(prev)
-        }
-    }
-
-    /**
-     * Make an offer on an item.
-     */
-    suspend fun makeOfferAsync(
-        input: MakeOfferInput,
-        accessToken: String? = null
-    ): MakeOfferMutation.MakeOffer? {
-        val prev = TokenContext.CURRENT.get()
-        TokenContext.CURRENT.set(accessToken ?: prev)
-        try {
-            val response = apolloClient.mutation(MakeOfferMutation(input)).execute()
-            if (response.hasErrors()) {
-                throw GraphQLException(response.errors!!.map { it.message })
-            }
-            return response.dataAssertNoErrors.makeOffer
-        } finally {
-            TokenContext.CURRENT.set(prev)
-        }
-    }
-
-    // ══════════════════════════════════════════════════════════════════════════
-    // QUERIES
-    // ══════════════════════════════════════════════════════════════════════════
-
-    /**
-     * Get seller's negotiation history.
-     */
-    suspend fun sellerNegotiationHistoryAsync(
-        input: SellerNegotiationHistoryInput,
-        accessToken: String? = null
-    ): SellerNegotiationHistoryQuery.SellerNegotiationHistory? {
-        val prev = TokenContext.CURRENT.get()
-        TokenContext.CURRENT.set(accessToken ?: prev)
-        try {
-            val response = apolloClient.query(SellerNegotiationHistoryQuery(input)).execute()
-            if (response.hasErrors()) {
-                throw GraphQLException(response.errors!!.map { it.message })
-            }
-            return response.dataAssertNoErrors.sellerNegotiationHistory
-        } finally {
-            TokenContext.CURRENT.set(prev)
-        }
-    }
-
-    /**
-     * Get buyer's negotiation history.
-     */
     suspend fun buyerNegotiationHistoryAsync(
         input: BuyerNegotiationHistoryInput,
         accessToken: String? = null
@@ -165,18 +66,85 @@ class OffersGraphQLClient @JvmOverloads internal constructor(
         }
     }
 
-    // ══════════════════════════════════════════════════════════════════════════
-    // JAVA-FRIENDLY COMPLETABLE FUTURE WRAPPERS
-    // ══════════════════════════════════════════════════════════════════════════
+    suspend fun counterOfferAsync(
+        input: CounterOfferInput,
+        accessToken: String? = null
+    ): CounterOfferMutation.CounterOffer? {
+        val prev = TokenContext.CURRENT.get()
+        TokenContext.CURRENT.set(accessToken ?: prev)
+        try {
+            val response = apolloClient.mutation(CounterOfferMutation(input)).execute()
+            if (response.hasErrors()) {
+                throw GraphQLException(response.errors!!.map { it.message })
+            }
+            return response.dataAssertNoErrors.counterOffer
+        } finally {
+            TokenContext.CURRENT.set(prev)
+        }
+    }
+
+    suspend fun declineOfferAsync(
+        input: DeclineOfferInput,
+        accessToken: String? = null
+    ): DeclineOfferMutation.DeclineOffer? {
+        val prev = TokenContext.CURRENT.get()
+        TokenContext.CURRENT.set(accessToken ?: prev)
+        try {
+            val response = apolloClient.mutation(DeclineOfferMutation(input)).execute()
+            if (response.hasErrors()) {
+                throw GraphQLException(response.errors!!.map { it.message })
+            }
+            return response.dataAssertNoErrors.declineOffer
+        } finally {
+            TokenContext.CURRENT.set(prev)
+        }
+    }
+
+    suspend fun makeOfferAsync(
+        input: MakeOfferInput,
+        accessToken: String? = null
+    ): MakeOfferMutation.MakeOffer? {
+        val prev = TokenContext.CURRENT.get()
+        TokenContext.CURRENT.set(accessToken ?: prev)
+        try {
+            val response = apolloClient.mutation(MakeOfferMutation(input)).execute()
+            if (response.hasErrors()) {
+                throw GraphQLException(response.errors!!.map { it.message })
+            }
+            return response.dataAssertNoErrors.makeOffer
+        } finally {
+            TokenContext.CURRENT.set(prev)
+        }
+    }
+
+    suspend fun sellerNegotiationHistoryAsync(
+        input: SellerNegotiationHistoryInput,
+        accessToken: String? = null
+    ): SellerNegotiationHistoryQuery.SellerNegotiationHistory? {
+        val prev = TokenContext.CURRENT.get()
+        TokenContext.CURRENT.set(accessToken ?: prev)
+        try {
+            val response = apolloClient.query(SellerNegotiationHistoryQuery(input)).execute()
+            if (response.hasErrors()) {
+                throw GraphQLException(response.errors!!.map { it.message })
+            }
+            return response.dataAssertNoErrors.sellerNegotiationHistory
+        } finally {
+            TokenContext.CURRENT.set(prev)
+        }
+    }
 
     fun acceptOfferFuture(input: AcceptOfferInput, accessToken: String?) =
         scope.future { acceptOfferAsync(input, accessToken) }
 
-    fun declineOfferFuture(input: DeclineOfferInput, accessToken: String?) =
-        scope.future { declineOfferAsync(input, accessToken) }
+    fun buyerNegotiationHistoryFuture(input: BuyerNegotiationHistoryInput, accessToken: String?) =
+        scope.future { buyerNegotiationHistoryAsync(input, accessToken) }
 
     fun counterOfferFuture(input: CounterOfferInput, accessToken: String?) =
         scope.future { counterOfferAsync(input, accessToken) }
+
+    fun declineOfferFuture(input: DeclineOfferInput, accessToken: String?) =
+        scope.future { declineOfferAsync(input, accessToken) }
 
     fun makeOfferFuture(input: MakeOfferInput, accessToken: String?) =
         scope.future { makeOfferAsync(input, accessToken) }
@@ -184,18 +152,14 @@ class OffersGraphQLClient @JvmOverloads internal constructor(
     fun sellerNegotiationHistoryFuture(input: SellerNegotiationHistoryInput, accessToken: String?) =
         scope.future { sellerNegotiationHistoryAsync(input, accessToken) }
 
-    fun buyerNegotiationHistoryFuture(input: BuyerNegotiationHistoryInput, accessToken: String?) =
-        scope.future { buyerNegotiationHistoryAsync(input, accessToken) }
-
-    // ══════════════════════════════════════════════════════════════════════════
-    // ESCAPE HATCH: RAW GRAPHQL
-    // ══════════════════════════════════════════════════════════════════════════
-
     /**
-     * Execute arbitrary GraphQL query/mutation.
-     * Escape hatch for operations not yet wrapped in typed methods.
+     * Execute an arbitrary GraphQL query or mutation (escape hatch).
+     *
+     * **WARNING — GraphQL injection risk.** Never interpolate user-supplied input
+     * directly into the query string. Always pass dynamic values via [variables]
+     * so the server handles escaping.
      */
-    fun executeRaw(
+    fun executeRawUnsafe(
         query: String,
         variables: Any?,
         accessToken: String?,

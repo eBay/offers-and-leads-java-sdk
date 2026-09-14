@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.ebay.offersandleads.generated.feed.classified_lead.item;
+package com.ebay.offersandleads.generated.classifiedleads.classified_lead.item;
 
-import com.ebay.offersandleads.generated.feed.models.ClassifiedLead;
+import com.ebay.offersandleads.generated.classifiedleads.models.ClassifiedLead;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;

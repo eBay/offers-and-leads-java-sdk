@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.ebay.offersandleads.generated.feed;
+package com.ebay.offersandleads.generated.classifiedleads;
 
-import com.ebay.offersandleads.generated.feed.classified_lead.ClassifiedLeadRequestBuilder;
+import com.ebay.offersandleads.generated.classifiedleads.classified_lead.ClassifiedLeadRequestBuilder;
 import com.microsoft.kiota.ApiClientBuilder;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.RequestAdapter;
@@ -33,7 +33,7 @@ import java.util.Objects;
  * The main entry point of the SDK, exposes the configuration and the fluent API.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class FeedApiClient extends BaseRequestBuilder {
+public class ClassifiedLeadsApiClient extends BaseRequestBuilder {
     /**
      * The classified_lead property
      * @return a {@link ClassifiedLeadRequestBuilder}
@@ -43,10 +43,10 @@ public class FeedApiClient extends BaseRequestBuilder {
         return new ClassifiedLeadRequestBuilder(pathParameters, requestAdapter);
     }
     /**
-     * Instantiates a new {@link FeedApiClient} and sets the default values.
+     * Instantiates a new {@link ClassifiedLeadsApiClient} and sets the default values.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
-    public FeedApiClient(@jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
+    public ClassifiedLeadsApiClient(@jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
         super(requestAdapter, "{+baseurl}");
         this.pathParameters = new HashMap<>();
         ApiClientBuilder.registerDefaultSerializer(() -> new JsonSerializationWriterFactory());
