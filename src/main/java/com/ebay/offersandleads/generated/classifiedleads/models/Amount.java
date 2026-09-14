@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * This type provides monetary amount of the special fee.
+ * This type provides the monetary amount of the special fee.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class Amount implements AdditionalDataHolder, Parsable {
@@ -31,19 +31,19 @@ public class Amount implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * A three-letter ISO 4217 code that indicates the currency of the amount in the &lt;b&gt;convertedFromValue&lt;/b&gt; field. This value is required or returned only if currency conversion/localization is required, and represents the pre-conversion currency.
+     * A three-letter ISO 4217 code that indicates the currency of the amount in the &lt;strong&gt;convertedFromValue&lt;/strong&gt; field. This value is required or returned only if currency conversion/localization is required and represents the pre-conversion currency.
      */
     private String convertedFromCurrency;
     /**
-     * The monetary amount before any conversion is performed, in the currency specified by the &lt;b&gt;convertedFromCurrency&lt;/b&gt; field. This value is required or returned only if currency conversion/localization is required. The value field contains the converted amount of this value, in the currency specified by the &lt;b&gt;currency&lt;/b&gt; field.
+     * The monetary amount before any conversion is performed in the currency specified by the &lt;strong&gt;convertedFromCurrency&lt;/strong&gt; field. This value is required or returned only if currency conversion/localization is required. The value field contains the converted amount of this value in the currency specified by the &lt;strong&gt;currency&lt;/strong&gt; field.
      */
     private String convertedFromValue;
     /**
-     * A three-letter ISO 4217 code that indicates the currency of the amount in the &lt;b&gt;value&lt;/b&gt; field. If currency conversion/localization is required, this is the post-conversion currency of the amount in the &lt;b&gt;value&lt;/b&gt; field.
+     * A three-letter ISO 4217 code that indicates the currency of the amount in the &lt;strong&gt;value&lt;/strong&gt; field. If currency conversion/localization is required, this is the post-conversion currency of the amount in the &lt;strong&gt;value&lt;/strong&gt; field.
      */
     private String currency;
     /**
-     * The monetary amount, in the currency specified by the &lt;b&gt;currency&lt;/b&gt; field. If currency conversion/localization is required, this value is the converted amount, and the &lt;b&gt;convertedFromValue&lt;/b&gt; field contains the amount in the original currency.
+     * The monetary amount in the currency specified in the &lt;strong&gt;currency&lt;/strong&gt; field. If currency conversion/localization is required, this value is the converted amount, and the &lt;strong&gt;convertedFromValue&lt;/strong&gt; field contains the amount in the original currency.
      */
     private String value;
     /**
@@ -71,7 +71,7 @@ public class Amount implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the convertedFromCurrency property value. A three-letter ISO 4217 code that indicates the currency of the amount in the &lt;b&gt;convertedFromValue&lt;/b&gt; field. This value is required or returned only if currency conversion/localization is required, and represents the pre-conversion currency.
+     * Gets the convertedFromCurrency property value. A three-letter ISO 4217 code that indicates the currency of the amount in the &lt;strong&gt;convertedFromValue&lt;/strong&gt; field. This value is required or returned only if currency conversion/localization is required and represents the pre-conversion currency.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -79,7 +79,7 @@ public class Amount implements AdditionalDataHolder, Parsable {
         return this.convertedFromCurrency;
     }
     /**
-     * Gets the convertedFromValue property value. The monetary amount before any conversion is performed, in the currency specified by the &lt;b&gt;convertedFromCurrency&lt;/b&gt; field. This value is required or returned only if currency conversion/localization is required. The value field contains the converted amount of this value, in the currency specified by the &lt;b&gt;currency&lt;/b&gt; field.
+     * Gets the convertedFromValue property value. The monetary amount before any conversion is performed in the currency specified by the &lt;strong&gt;convertedFromCurrency&lt;/strong&gt; field. This value is required or returned only if currency conversion/localization is required. The value field contains the converted amount of this value in the currency specified by the &lt;strong&gt;currency&lt;/strong&gt; field.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -87,7 +87,7 @@ public class Amount implements AdditionalDataHolder, Parsable {
         return this.convertedFromValue;
     }
     /**
-     * Gets the currency property value. A three-letter ISO 4217 code that indicates the currency of the amount in the &lt;b&gt;value&lt;/b&gt; field. If currency conversion/localization is required, this is the post-conversion currency of the amount in the &lt;b&gt;value&lt;/b&gt; field.
+     * Gets the currency property value. A three-letter ISO 4217 code that indicates the currency of the amount in the &lt;strong&gt;value&lt;/strong&gt; field. If currency conversion/localization is required, this is the post-conversion currency of the amount in the &lt;strong&gt;value&lt;/strong&gt; field.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -108,7 +108,7 @@ public class Amount implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the value property value. The monetary amount, in the currency specified by the &lt;b&gt;currency&lt;/b&gt; field. If currency conversion/localization is required, this value is the converted amount, and the &lt;b&gt;convertedFromValue&lt;/b&gt; field contains the amount in the original currency.
+     * Gets the value property value. The monetary amount in the currency specified in the &lt;strong&gt;currency&lt;/strong&gt; field. If currency conversion/localization is required, this value is the converted amount, and the &lt;strong&gt;convertedFromValue&lt;/strong&gt; field contains the amount in the original currency.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -135,28 +135,28 @@ public class Amount implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the convertedFromCurrency property value. A three-letter ISO 4217 code that indicates the currency of the amount in the &lt;b&gt;convertedFromValue&lt;/b&gt; field. This value is required or returned only if currency conversion/localization is required, and represents the pre-conversion currency.
+     * Sets the convertedFromCurrency property value. A three-letter ISO 4217 code that indicates the currency of the amount in the &lt;strong&gt;convertedFromValue&lt;/strong&gt; field. This value is required or returned only if currency conversion/localization is required and represents the pre-conversion currency.
      * @param value Value to set for the convertedFromCurrency property.
      */
     public void setConvertedFromCurrency(@jakarta.annotation.Nullable final String value) {
         this.convertedFromCurrency = value;
     }
     /**
-     * Sets the convertedFromValue property value. The monetary amount before any conversion is performed, in the currency specified by the &lt;b&gt;convertedFromCurrency&lt;/b&gt; field. This value is required or returned only if currency conversion/localization is required. The value field contains the converted amount of this value, in the currency specified by the &lt;b&gt;currency&lt;/b&gt; field.
+     * Sets the convertedFromValue property value. The monetary amount before any conversion is performed in the currency specified by the &lt;strong&gt;convertedFromCurrency&lt;/strong&gt; field. This value is required or returned only if currency conversion/localization is required. The value field contains the converted amount of this value in the currency specified by the &lt;strong&gt;currency&lt;/strong&gt; field.
      * @param value Value to set for the convertedFromValue property.
      */
     public void setConvertedFromValue(@jakarta.annotation.Nullable final String value) {
         this.convertedFromValue = value;
     }
     /**
-     * Sets the currency property value. A three-letter ISO 4217 code that indicates the currency of the amount in the &lt;b&gt;value&lt;/b&gt; field. If currency conversion/localization is required, this is the post-conversion currency of the amount in the &lt;b&gt;value&lt;/b&gt; field.
+     * Sets the currency property value. A three-letter ISO 4217 code that indicates the currency of the amount in the &lt;strong&gt;value&lt;/strong&gt; field. If currency conversion/localization is required, this is the post-conversion currency of the amount in the &lt;strong&gt;value&lt;/strong&gt; field.
      * @param value Value to set for the currency property.
      */
     public void setCurrency(@jakarta.annotation.Nullable final String value) {
         this.currency = value;
     }
     /**
-     * Sets the value property value. The monetary amount, in the currency specified by the &lt;b&gt;currency&lt;/b&gt; field. If currency conversion/localization is required, this value is the converted amount, and the &lt;b&gt;convertedFromValue&lt;/b&gt; field contains the amount in the original currency.
+     * Sets the value property value. The monetary amount in the currency specified in the &lt;strong&gt;currency&lt;/strong&gt; field. If currency conversion/localization is required, this value is the converted amount, and the &lt;strong&gt;convertedFromValue&lt;/strong&gt; field contains the amount in the original currency.
      * @param value Value to set for the value property.
      */
     public void setValue(@jakarta.annotation.Nullable final String value) {

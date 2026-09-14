@@ -20,7 +20,7 @@ echo "Generating Offers and Leads Java SDK with Kiota..."
 rm -rf src/main/java/com/ebay/offersandleads/generated
 
 echo "Generating ClassifiedLeadsApiClient..."
-kiota generate -l java -d specs/openapi/classified-leads.yaml \
+kiota generate -l java -d specs/openapi/classified-leads.json \
   -c ClassifiedLeadsApiClient -n com.ebay.offersandleads.generated.classifiedleads \
   -o src/main/java/com/ebay/offersandleads/generated/classifiedleads --ebc --co
 

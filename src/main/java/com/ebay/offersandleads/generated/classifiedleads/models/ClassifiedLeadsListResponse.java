@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * This type contains an array of for the seller&apos;s active classified ad listings, the total number of items, and leads.
+ * This type contains an array of the seller&apos;s active classified ad listings and the total number of items and leads.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class ClassifiedLeadsListResponse implements AdditionalDataHolder, Parsable {
