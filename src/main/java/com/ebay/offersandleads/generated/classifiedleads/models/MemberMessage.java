@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.ebay.offersandleads.generated.feed.models;
+package com.ebay.offersandleads.generated.classifiedleads.models;
 
 import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
@@ -22,37 +22,33 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * This type returns the amount charged for the lead service.
+ * This type defines the field containing any mail message content shared between the seller and prospective buyer.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class LeadFee implements AdditionalDataHolder, Parsable {
+public class MemberMessage implements AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
     private Map<String, Object> additionalData;
     /**
-     * This type provides monetary amount of the special fee.
+     * An array that provides detailed information about a member-to-member message.
      */
-    private Amount amount;
+    private java.util.List<MemberMessageExchange> memberMessageExchange;
     /**
-     * An explanation of the special fee charged.
+     * Instantiates a new {@link MemberMessage} and sets the default values.
      */
-    private String description;
-    /**
-     * Instantiates a new {@link LeadFee} and sets the default values.
-     */
-    public LeadFee() {
+    public MemberMessage() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a {@link LeadFee}
+     * @return a {@link MemberMessage}
      */
     @jakarta.annotation.Nonnull
-    public static LeadFee createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+    public static MemberMessage createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
         Objects.requireNonNull(parseNode);
-        return new LeadFee();
+        return new MemberMessage();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -63,31 +59,22 @@ public class LeadFee implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the amount property value. This type provides monetary amount of the special fee.
-     * @return a {@link Amount}
-     */
-    @jakarta.annotation.Nullable
-    public Amount getAmount() {
-        return this.amount;
-    }
-    /**
-     * Gets the description property value. An explanation of the special fee charged.
-     * @return a {@link String}
-     */
-    @jakarta.annotation.Nullable
-    public String getDescription() {
-        return this.description;
-    }
-    /**
      * The deserialization information for the current model
      * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
-        deserializerMap.put("amount", (n) -> { this.setAmount(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
-        deserializerMap.put("description", (n) -> { this.setDescription(n.getStringValue()); });
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(1);
+        deserializerMap.put("memberMessageExchange", (n) -> { this.setMemberMessageExchange(n.getCollectionOfObjectValues(MemberMessageExchange::createFromDiscriminatorValue)); });
         return deserializerMap;
+    }
+    /**
+     * Gets the memberMessageExchange property value. An array that provides detailed information about a member-to-member message.
+     * @return a {@link java.util.List<MemberMessageExchange>}
+     */
+    @jakarta.annotation.Nullable
+    public java.util.List<MemberMessageExchange> getMemberMessageExchange() {
+        return this.memberMessageExchange;
     }
     /**
      * Serializes information the current object
@@ -95,8 +82,7 @@ public class LeadFee implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeObjectValue("amount", this.getAmount());
-        writer.writeStringValue("description", this.getDescription());
+        writer.writeCollectionOfObjectValues("memberMessageExchange", this.getMemberMessageExchange());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -107,17 +93,10 @@ public class LeadFee implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the amount property value. This type provides monetary amount of the special fee.
-     * @param value Value to set for the amount property.
+     * Sets the memberMessageExchange property value. An array that provides detailed information about a member-to-member message.
+     * @param value Value to set for the memberMessageExchange property.
      */
-    public void setAmount(@jakarta.annotation.Nullable final Amount value) {
-        this.amount = value;
-    }
-    /**
-     * Sets the description property value. An explanation of the special fee charged.
-     * @param value Value to set for the description property.
-     */
-    public void setDescription(@jakarta.annotation.Nullable final String value) {
-        this.description = value;
+    public void setMemberMessageExchange(@jakarta.annotation.Nullable final java.util.List<MemberMessageExchange> value) {
+        this.memberMessageExchange = value;
     }
 }

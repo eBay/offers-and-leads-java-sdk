@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.ebay.offersandleads.generated.feed.models;
+package com.ebay.offersandleads.generated.classifiedleads.models;
 
 import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
@@ -22,37 +22,37 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * Question
+ * This type returns the amount charged for the lead service.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class Question implements AdditionalDataHolder, Parsable {
+public class LeadFee implements AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
     private Map<String, Object> additionalData;
     /**
-     * Content of the message is input into this string field.
+     * This type provides monetary amount of the special fee.
      */
-    private String body;
+    private Amount amount;
     /**
-     * The unique identifier of the message.
+     * An explanation of the special fee charged.
      */
-    private Integer messageID;
+    private String description;
     /**
-     * Instantiates a new {@link Question} and sets the default values.
+     * Instantiates a new {@link LeadFee} and sets the default values.
      */
-    public Question() {
+    public LeadFee() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a {@link Question}
+     * @return a {@link LeadFee}
      */
     @jakarta.annotation.Nonnull
-    public static Question createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+    public static LeadFee createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
         Objects.requireNonNull(parseNode);
-        return new Question();
+        return new LeadFee();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -63,12 +63,20 @@ public class Question implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the body property value. Content of the message is input into this string field.
+     * Gets the amount property value. This type provides monetary amount of the special fee.
+     * @return a {@link Amount}
+     */
+    @jakarta.annotation.Nullable
+    public Amount getAmount() {
+        return this.amount;
+    }
+    /**
+     * Gets the description property value. An explanation of the special fee charged.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
-    public String getBody() {
-        return this.body;
+    public String getDescription() {
+        return this.description;
     }
     /**
      * The deserialization information for the current model
@@ -77,17 +85,9 @@ public class Question implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
-        deserializerMap.put("body", (n) -> { this.setBody(n.getStringValue()); });
-        deserializerMap.put("messageID", (n) -> { this.setMessageID(n.getIntegerValue()); });
+        deserializerMap.put("amount", (n) -> { this.setAmount(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
+        deserializerMap.put("description", (n) -> { this.setDescription(n.getStringValue()); });
         return deserializerMap;
-    }
-    /**
-     * Gets the messageID property value. The unique identifier of the message.
-     * @return a {@link Integer}
-     */
-    @jakarta.annotation.Nullable
-    public Integer getMessageID() {
-        return this.messageID;
     }
     /**
      * Serializes information the current object
@@ -95,8 +95,8 @@ public class Question implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("body", this.getBody());
-        writer.writeIntegerValue("messageID", this.getMessageID());
+        writer.writeObjectValue("amount", this.getAmount());
+        writer.writeStringValue("description", this.getDescription());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -107,17 +107,17 @@ public class Question implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the body property value. Content of the message is input into this string field.
-     * @param value Value to set for the body property.
+     * Sets the amount property value. This type provides monetary amount of the special fee.
+     * @param value Value to set for the amount property.
      */
-    public void setBody(@jakarta.annotation.Nullable final String value) {
-        this.body = value;
+    public void setAmount(@jakarta.annotation.Nullable final Amount value) {
+        this.amount = value;
     }
     /**
-     * Sets the messageID property value. The unique identifier of the message.
-     * @param value Value to set for the messageID property.
+     * Sets the description property value. An explanation of the special fee charged.
+     * @param value Value to set for the description property.
      */
-    public void setMessageID(@jakarta.annotation.Nullable final Integer value) {
-        this.messageID = value;
+    public void setDescription(@jakarta.annotation.Nullable final String value) {
+        this.description = value;
     }
 }
