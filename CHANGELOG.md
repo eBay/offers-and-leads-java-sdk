@@ -2,12 +2,20 @@
 
 ## 0.2.0 (09/14/2026)
 
-Consolidated experimental release.
+### Breaking changes
 
-- REST clients: `ClassifiedLeadsClient`.
-- GraphQL support for 6 checked-in operations.
-- Includes the current API definitions, regenerated clients, and wrapper updates.
-- Preserves existing wrapper parameter order where signatures allow it.
-- Aligns wrapper query parameter types with the generated Kiota clients.
+#### Renamed clients and members
 
-This entry establishes the consolidated experimental baseline.
+| Previous | Current |
+| --- | --- |
+| `LeadsClient` | `ClassifiedLeadsClient` |
+| `OffersAndLeadsClient.leads` | `OffersAndLeadsClient.classifiedLeads` |
+
+#### Changed signatures
+
+The renamed classified-leads client retains both operations with updated parameters:
+
+| Operation | Previous parameters | Current parameters |
+| --- | --- | --- |
+| `getAllClassifiedLeadsAsync` | `(String startTime, String endTime, String status, String includeMessages, String accessToken, RequestOptions requestOptions)` | `(String endTime, String includeMessages, String startTime, String status, String acceptEncoding, String accessToken, RequestOptions requestOptions)` |
+| `getClassifiedLeadsByItemIdAsync` | `(String itemId, String startTime, String endTime, String status, String includeMessages, String accessToken, RequestOptions requestOptions)` | `(String itemId, String endTime, String includeMessages, String startTime, String status, String acceptEncoding, String accessToken, RequestOptions requestOptions)` |
