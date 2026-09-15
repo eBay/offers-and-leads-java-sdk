@@ -1,14 +1,21 @@
 # ChangeLog
 
-## 1.0.0 (09/14/2026)
+## 0.2.0 (09/14/2026)
 
-**Breaking changes**
-- The following clients were removed:
-  - `LeadsClient`
-- The following members were removed from `OffersAndLeadsClient`:
-  - `leads`
+### Breaking changes
 
-- The following clients were added:
-  - `ClassifiedLeadsClient`
-- The following members were added to `OffersAndLeadsClient`:
-  - `classifiedLeads`
+#### Renamed clients and members
+
+| Previous | Current |
+| --- | --- |
+| `LeadsClient` | `ClassifiedLeadsClient` |
+| `OffersAndLeadsClient.leads` | `OffersAndLeadsClient.classifiedLeads` |
+
+#### Changed signatures
+
+The renamed classified-leads client retains both operations with updated parameters:
+
+| Operation | Previous parameters | Current parameters |
+| --- | --- | --- |
+| `getAllClassifiedLeadsAsync` | `(String startTime, String endTime, String status, String includeMessages, String accessToken, RequestOptions requestOptions)` | `(String endTime, String includeMessages, String startTime, String status, String acceptEncoding, String accessToken, RequestOptions requestOptions)` |
+| `getClassifiedLeadsByItemIdAsync` | `(String itemId, String startTime, String endTime, String status, String includeMessages, String accessToken, RequestOptions requestOptions)` | `(String itemId, String endTime, String includeMessages, String startTime, String status, String acceptEncoding, String accessToken, RequestOptions requestOptions)` |
