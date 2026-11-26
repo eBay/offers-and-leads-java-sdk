@@ -19,9 +19,11 @@ import com.ebay.offersandleads.clients.graphql.BearerTokenInterceptor;
 import com.ebay.offersandleads.clients.graphql.DynamicGraphQLClient;
 import com.ebay.offersandleads.clients.graphql.OffersGraphQLClient;
 import com.ebay.offersandleads.clients.rest.ClassifiedLeadsClient;
+import com.ebay.offersandleads.clients.rest.NegotiationClient;
 import com.ebay.offersandleads.configuration.KiotaAuthProvider;
 import com.ebay.offersandleads.configuration.OffersAndLeadsConfiguration;
 import com.ebay.offersandleads.generated.classifiedleads.ClassifiedLeadsApiClient;
+import com.ebay.offersandleads.generated.negotiation.NegotiationApiClient;
 import com.microsoft.kiota.authentication.BaseBearerTokenAuthenticationProvider;
 import com.microsoft.kiota.http.OkHttpRequestAdapter;
 import okhttp3.OkHttpClient;
@@ -36,6 +38,7 @@ public final class OffersAndLeadsClient implements Closeable {
     private final OkHttpClient apolloHttpClient;
 
     public final ClassifiedLeadsClient classifiedLeads;
+    public final NegotiationClient negotiation;
     public final OffersGraphQLClient graphQL;
 
     public OffersAndLeadsClient(OffersAndLeadsConfiguration config) {
@@ -50,6 +53,10 @@ public final class OffersAndLeadsClient implements Closeable {
         var classifiedLeadsAdapter = new OkHttpRequestAdapter(authProvider, null, null, sharedHttpClient);
         classifiedLeadsAdapter.setBaseUrl(config.getClassifiedLeadsBaseUrl());
         this.classifiedLeads = new ClassifiedLeadsClient(new ClassifiedLeadsApiClient(classifiedLeadsAdapter), config);
+
+        var negotiationAdapter = new OkHttpRequestAdapter(authProvider, null, null, sharedHttpClient);
+        negotiationAdapter.setBaseUrl(config.getNegotiationBaseUrl());
+        this.negotiation = new NegotiationClient(new NegotiationApiClient(negotiationAdapter), config);
 
         this.apolloHttpClient = new OkHttpClient.Builder()
             .connectTimeout(10, TimeUnit.SECONDS)

@@ -16,6 +16,13 @@
 
 set -euo pipefail
 
+KIOTA_VERSION=$(kiota --version 2>/dev/null | cut -d'+' -f1)
+if [ "$KIOTA_VERSION" != "1.35.0" ]; then
+  echo "Error: kiota 1.35.0 required, found '${KIOTA_VERSION:-not installed}'"
+  echo "See https://learn.microsoft.com/en-us/openapi/kiota/install for installation options."
+  exit 1
+fi
+
 echo "Generating Offers and Leads Java SDK with Kiota..."
 rm -rf src/main/java/com/ebay/offersandleads/generated
 
@@ -23,6 +30,11 @@ echo "Generating ClassifiedLeadsApiClient..."
 kiota generate -l java -d specs/openapi/classified-leads.json \
   -c ClassifiedLeadsApiClient -n com.ebay.offersandleads.generated.classifiedleads \
   -o src/main/java/com/ebay/offersandleads/generated/classifiedleads --ebc --co
+
+echo "Generating NegotiationApiClient..."
+kiota generate -l java -d specs/openapi/negotiation.json \
+  -c NegotiationApiClient -n com.ebay.offersandleads.generated.negotiation \
+  -o src/main/java/com/ebay/offersandleads/generated/negotiation --ebc --co
 
 echo "Adding license headers to generated files..."
 ./add-license-headers.sh ./src
